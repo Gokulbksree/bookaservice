@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Carousel Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .carousel input {
+            display: none;
+        }
+
+        .cards {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px 15px;
+            width: 800px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* margin: 15px; */
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: fill;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .carousel input:checked + .cards {
+            transform: translateX(calc(-300px * var(--index)));
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel input:nth-child(1):checked ~ .carousel-dots .dot:nth-child(1),
+        .carousel input:nth-child(2):checked ~ .carousel-dots .dot:nth-child(2),
+        .carousel input:nth-child(3):checked ~ .carousel-dots .dot:nth-child(3),
+        .carousel input:nth-child(4):checked ~ .carousel-dots .dot:nth-child(4){
+            background-color: #333;
+        }
+
+        .card {
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            box-shadow: 5px 12px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .customer-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+        }
+
+        .review-text {
+            line-height: 1.5;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .star {
+            color: #ffd700;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel">
+        <input type="radio" id="slide1" name="carousel" checked>
+        <input type="radio" id="slide2" name="carousel">
+        <input type="radio" id="slide3" name="carousel">
+        <input type="radio" id="slide4" name="carousel">
+
+        <div class="cards">
+            <div class="card">
+                <img src="car_repair_1.jpg" alt="Card Image 1">
+                <div class="card-content">
+                    <h2>Card Title 1</h2>
+                    <p>This is some sample content for Card 1. You can add more details here.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="car_repair_2.jpg" alt="Card Image 2">
+                <div class="card-content">
+                    <h2>Card Title 2</h2>
+                    <p>This is some sample content for Card 2. You can add more details here.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="car_repair_3.jpg" alt="Card Image 3">
+                <div class="card-content">
+                    <h2>Card Title 3</h2>
+                    <p>This is some sample content for Card 3. You can add more details here.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="car_repair_4.jpg" alt="Card Image 4">
+                <div class="card-content">
+                    <h2>Card Title 4</h2>
+                    <p>This is some sample content for Card 4. You can add more details here.</p>
+                </div>
+            </div>
+        </div>
+
+        <label class="prev" for="slide1">❮</label>
+        <label class="next" for="slide2">❯</label>
+
+        <div class="carousel-dots">
+            <label class="dot" for="slide1"></label>
+            <label class="dot" for="slide2"></label>
+            <label class="dot" for="slide3"></label>
+            <label class="dot" for="slide4"></label>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="customer-info">
+                <img src="cust Vector.jpg" alt="Customer Avatar">
+                <div>
+                    <p class="customer-name">Riyas </p>
+                    <p>Dated: January 1, 2023</p>
+                </div>
+            </div>
+            <p class="review-text"> I have been using this mechanic shop for over 8 years. Hes very knowledgeable, trustworthy, fair, and clear. He has experience in many makes. Highly recommend without reservation.</p>
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                <span>4/5</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service</title>
+    <style>
+        header {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            color: white;
+        }
+
+        .carousel-container{
+            display: block;
+            align-items: center;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: greenyellow;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            color: white;
+            font-weight: bolder;
+        }
+
+        nav form {
+            float: right;
+            font-display: calc(100%);
+            height: 20px;
+            width: auto;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        nav form {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        nav input[type="submit"] {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            align-content: end;
+        }
+
+        nav input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h1,h2,h3,h4{
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #ffd700;
+
+        }
+
+        header {
+            text-decoration: double;
+            font-size: 30px;
+            color: darkred;
+            font-weight: 600;
+            text-align: center;
+            background-color: goldenrod;
+            padding: 10px 5px;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+
+        .service-images-container {
+            display: inline-block;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .service-images-container img {
+            width: 30%;
+        }
+
+        .service-images-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .repair-item {
+            display: flex;
+            background-color: #4CAF50;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .repair-item>div {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            width: auto;
+            height: auto;
+            border: 5px solid tomato;
+            margin: 10px;
+
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .carousel input {
+            display: none;
+        } */
+
+        .cards {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px 15px;
+            width: 800px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* margin: 15px; */
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: fill;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .carousel input:checked+.cards {
+            transform: translateX(calc(-300px * var(--index)));
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-dots{
+        .carousel input:nth-child(1):checked~.carousel-dots .dot:nth-child(1),
+        .carousel input:nth-child(2):checked~.carousel-dots .dot:nth-child(2),
+        .carousel input:nth-child(3):checked~.carousel-dots .dot:nth-child(3),
+        .carousel input:nth-child(4):checked~.carousel-dots .dot:nth-child(4) {
+            background-color: #333;
+        }
+    }
+
+        .card {
+            text-align: center;
+            width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            box-shadow: 5px 12px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            text-align: center;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            box-shadow: 5px 12px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .customer-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+        }
+
+        .review-text {
+            line-height: 1.5;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .star {
+            color: #ffd700;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="icon">&#x1F697;</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Login</a>
+        <form action="#" method="GET">
+            <input type="text" placeholder="Search..." name="search">
+            <input type="submit" value="Search">
+        </form>
+        <a href="#"><img src="car_icon.png" alt="Car Icon" class="icon"></a>
+    </nav>
+
+        <h1>Welcome to Motopit</h1>
+        <carousel-container>
+            <img src="car_service1.jpg" alt="Header Image 1" style="width: 100%;">
+            <img src="car_service2.jpg" alt="Header Image 2" style="width: 100%;">
+            <img src="car_service3.jpg" alt="Header Image 2" style="width: 100%;">
+            <img src="car_service4.jpg" alt="Header Image 2" style="width: 100%;">
+        </carousel-container>
+
+        <h2>Our Services</h2>
+        <section>
+            <p>Explore our top-notch car services.</p>
+            <div class="service-images-container">
+                <img src="service_image_1.png" alt="Service Image 1">
+                <p>
+                <header>Pick and Drop services </header> We offer dedicated office pick and
+                drop chauffeur service at Rs. 550 to 600/- per day (2 hours each for onward and return trip) wherein our
+                professionally trained drivers will come to your door step and will drive your car for you from home to
+                office and again back from office to home every working day. You can choose your own timings and select
+                days
+                of the week that you may need the driver for. Moreover, we ensure that the same driver reports to the
+                customer every day for office pick and drop. In the unlikely event of the regular driver not reporting
+                for
+                duty, we ensure that an alternate qualified driver takes his place for that day so that there is no
+                disruption in the office pick and drop duty pattern.</p>
+                <img src="service_image_2.png" alt="Service Image 2">
+                <p>
+                <header>Sanitised facility</header> We spent some precious time of our day-to-day life in our cars. So,
+                it
+                becomes very much important for us to keep our cars sanitized and disinfectant-free. Nowadays there are
+                lots
+                of diseases that spread on touching surfaces that might have come in contact with an infected person.
+                Our
+                car is the one which keeps on traveling and gets in touch with many. So, we must keep it clean and
+                hygienic
+                to keep ourselves and our loved ones free from any kind of disease.</p>
+                <img src="service_image_3.png" alt="Service Image 3">
+                <p>
+                <header>Genuiene spare parts</header> Genuine spare parts help you be safe and covered in case of any
+                malfunctioning in it. The guarantee of replacement covers all failures and can provide a warranty of 12
+                to
+                24 months, depending on the brand.</p>
+            </div>
+
+            <h3>MAINTAIN YOUR CAR</h3>
+
+            <!-- <div class="repair-item">
+                <div class="repair-item">
+                    <img src="car_repair_1.jpg" alt="Car Repair 1" width="100%" height="20px">
+                    <p>Being a major mechanical work, you should prefer to take your car to the authorized dealership or
+                        service center rather than trying to correct things at a local garage. Also, you should preserve
+                        receipts of the maintenance work as it will come handy if you start experiencing issues related to
+                        shocks and struts immediately after the repair.</p>
+                </div>
+
+                <div class="repair-item">
+                    <img src="car_repair_2.jpg" alt="Car Repair 2" width="100%" height="20px">
+                    <p>Ask the mechanic to check ride height during the maintenance procedures and make sure the
+                        original ride height is being maintained. Optimal ride height makes sure that the car runs
+                        optimally without straining any mechanical component of the car including shock absorbers,
+                        struts, ball-bearing, anti-roll bar, etc.</p>
+                </div>
+
+                <div class="repair-item">
+                    <img src="car_repair_3.jpg" alt="Car Repair 3" width="100%" height="20px">
+                    <p>A car’s suspension system is an integral part of its mechanical hardware. It suspends tires and
+                        more importantly, bears the weight of the vehicle through its complex assembly comprising mainly
+                        of shock absorbers and struts. We often tend to take our car’s suspension system for granted and
+                        hardly cares for it in the way we devote attention to the engine, transmission, and braking
+                        system of the car.</p>
+                </div>
+
+                <div class="repair-item">
+                    <img src="car_repair_4.jpg" alt="Car Repair 4" width="100%" height="20px">
+                    <p>If the mechanic gives you the same information, at least you know they are going down the right
+                        road," he notes. A code reader can provide car owners with one more data point to help them talk
+                        with their mechanic and avoid costly or unnecessary auto repairs. Just keep in mind that you'll
+                        have to figure out where your car's OBD-II port is (typically somewhere in the driver footwell)
+                        and get comfortable with plugging in and operating the code reader.
+
+                    </p>
+                </div>
+            </div> -->
+
+            <div class="cards">
+                <div class="card">
+                    <img src="car_repair_1.jpg" alt="Card Image 1">
+                    <div class="card-content">
+                        <h2>Service Check 1</h2>
+                        <p>Being a major mechanical work, you should prefer to take your car to the authorized dealership or
+                            service center rather than trying to correct things at a local garage. Also, you should preserve
+                            receipts of the maintenance work as it will come handy if you start experiencing issues related to
+                            shocks and struts immediately after the repair.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="car_repair_2.jpg" alt="Card Image 2">
+                    <div class="card-content">
+                        <h2>Service Check 2</h2>
+                        <p>Ask the mechanic to check ride height during the maintenance procedures and make sure the
+                            original ride height is being maintained. Optimal ride height makes sure that the car runs
+                            optimally without straining any mechanical component of the car including shock absorbers,
+                            struts, ball-bearing, anti-roll bar, etc.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="car_repair_3.jpg" alt="Card Image 3">
+                    <div class="card-content">
+                        <h2>Service Check 3</h2>
+                        <p>A car’s suspension system is an integral part of its mechanical hardware. It suspends tires and
+                            more importantly, bears the weight of the vehicle through its complex assembly comprising mainly
+                            of shock absorbers and struts. We often tend to take our car’s suspension system for granted and
+                            hardly cares for it in the way we devote attention to the engine, transmission, and braking
+                            system of the car.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="car_repair_4.jpg" alt="Card Image 4">
+                    <div class="card-content">
+                        <h2>Service Check 4</h2>
+                        <p>If the mechanic gives you the same information, at least you know they are going down the right
+                            road," he notes. A code reader can provide car owners with one more data point to help them talk
+                            with their mechanic and avoid costly or unnecessary auto repairs. Just keep in mind that you'll
+                            have to figure out where your car's OBD-II port is (typically somewhere in the driver footwell)
+                            and get comfortable with plugging in and operating the code reader.</p>
+                    </div>
+                </div>
+            </div>
+
+            <label class="prev" for="slide1">❮</label>
+            <label class="next" for="slide2">❯</label>
+
+            <div class="carousel-dots">
+                <label class="dot" for="slide1"></label>
+                <label class="dot" for="slide2"></label>
+                <label class="dot" for="slide3"></label>
+                <label class="dot" for="slide4"></label>
+            </div>
+
+    </div>
+
+    <h4>CUSTOMER REVIEWS</h4>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="customer-info1">
+                <img src="cust Vector.jpg" alt="Customer Avatar">
+                <div>
+                    <p class="customer-name">Riyas </p>
+                    <p>Dated: January 1, 2023</p>
+                </div>
+            </div>
+            <p class="review-text"> I have been using this mechanic shop for over 8 years. Hes very knowledgeable,
+                trustworthy, fair, and clear. He has experience in many makes. Highly recommend without reservation.</p>
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                <span>4/5</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="customer-info">
+                <img src="cust Vector.jpg" alt="Customer Avatar">
+                <div>
+                    <p class="customer-name">Arul </p>
+                    <p>Dated: February 10, 2023</p>
+                </div>
+            </div>
+            <p class="review-text"> I have been using this mechanic shop for over 8 years. Hes very knowledgeable,
+                trustworthy, fair, and clear. He has experience in many makes. Highly recommend without reservation.</p>
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                <span>4/5</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="customer-info">
+                <img src="cust Vector.jpg" alt="Customer Avatar">
+                <div>
+                    <p class="customer-name">Victor </p>
+                    <p>Dated: March 20, 2023</p>
+                </div>
+            </div>
+            <p class="review-text"> I have been using this mechanic shop for over 8 years. Hes very knowledgeable,
+                trustworthy, fair, and clear. He has experience in many makes. Highly recommend without reservation.</p>
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                <span>4/5</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="customer-info">
+                <img src="cust Vector.jpg" alt="Customer Avatar">
+                <div>
+                    <p class="customer-name">Ahmed </p>
+                    <p>Dated: April 30, 2023</p>
+                </div>
+            </div>
+            <p class="review-text"> I have been using this mechanic shop for over 8 years. Hes very knowledgeable,
+                trustworthy, fair, and clear. He has experience in many makes. Highly recommend without reservation.</p>
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                <span>4/5</span>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Motopit. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
