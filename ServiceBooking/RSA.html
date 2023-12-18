@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        color: #333;
+    }
+
+    section {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="button"] {
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+        background-color: #555;
+    }
+
+    footer {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <nav>
+        RSA Services at your doorstep 24x7 | Contact: 9876543210
+    </nav>
+
+    <h1>Roadside Assistance</h1>
+
+    <section>
+        <form id="roadsideAssistanceForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <input type="button" value="Next" onclick="submitForm()">
+        </form>
+    </section>
+
+    <footer>
+        <p>Roadside Assistance BENEFITS
+
+            24x7 Roadside Assistance
+            Punctured Tyre Replacement
+            Minor Repair Service
+            Jumpstart Service
+            On-Road Key Lockout Assistance
+            Tele Assistance and Emergency Message Relay
+            City Route & Map Guidance
+            Service Delivery within 29 Minutes
+            Highway Services
+            Towing (Vehicle to Vehicle)
+            Flatbed Trucks & Winching Services</p>
+    </footer>
+
+    <script>
+        function submitForm() {
+            // You can add validation logic here before submitting the form
+            // For simplicity, let's just alert a message
+            alert('Form submitted!');
+        }
+    </script>
+
+</body>
+
+</html>
